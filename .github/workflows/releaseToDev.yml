@@ -1,4 +1,4 @@
-name: Release build content to dev nonprod deployment
+name: Release build content 
 
 on:
     push:
