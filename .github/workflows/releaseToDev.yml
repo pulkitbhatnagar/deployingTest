@@ -1,0 +1,42 @@
+name: Release build content to dev nonprod deployment
+
+on:
+    push:
+        branches: ['main']
+        paths:
+            - /**
+
+env:
+    FOLDER_NAME: dev
+    CONTACTS_TARGET_DIR: /
+    CONTACTS_CONTEXT_PATH: ./
+    CONTACTS_UPLOAD_DIR: ./dist/
+    NODE_VERSION: 20.10.0
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Check out repository
+              uses: actions/checkout@v2
+
+            - name: yarn install and build for temp package
+              run: |
+                  echo "******************************"
+                  echo "TRIGGER APP BUILD"
+                  echo "******************************"
+                  yarn install
+                  yarn run build
+                  echo "******************************"
+                  echo "APP BUILD SUCCESS"
+                  echo "******************************"
+             
+            - name: Pushes contacts package to nonprod deployment repository
+              with:
+                  destination-github-username: pulkitbhatnagar
+                  destination-repository-name: dbk-mm-test-static-content-nonprod
+                  user-email: pulkitbhatnagar19999@gmail.com
+                  target-branch: main
+
+            
