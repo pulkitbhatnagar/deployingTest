@@ -33,7 +33,9 @@ jobs:
                   echo "******************************"
              
             - name: Pushes contacts package to nonprod deployment repository
+              uses: cpina/github-action-push-to-another-repository@main
               with:
+                  source-directory: public/
                   destination-github-username: pulkitbhatnagar
                   destination-repository-name: dbk-mm-test-static-content-nonprod
                   user-email: pulkitbhatnagar19999@gmail.com
