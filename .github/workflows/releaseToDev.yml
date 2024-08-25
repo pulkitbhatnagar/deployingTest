@@ -11,7 +11,7 @@ env:
     CONTACTS_TARGET_DIR: /
     CONTACTS_CONTEXT_PATH: ./
     CONTACTS_UPLOAD_DIR: ./dist/
-    NODE_VERSION: 20.10.0
+    NODE_VERSION: 22.5.1
 
 jobs:
     build:
