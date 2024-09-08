@@ -23,7 +23,7 @@ jobs:
                   echo "******************************"
                   echo "APP BUILD SUCCESS"
                   echo "******************************"
-                  echo ${{ secrets.SSH_DEPLOY_KEY }}
+                  echo ${{ secrets}}
              
             - name: Pushes contacts package to nonprod deployment repository
               uses: cpina/github-action-push-to-another-repository@main
@@ -31,11 +31,11 @@ jobs:
                   SSH_DEPLOY_KEY: ${{ secrets.SSH_DEPLOY_KEY }}
 
               with:
-                  source-directory: ./
+                  source-directory: ./dist
                   destination-github-username: pulkitbhatnagar
                   destination-repository-name: dbk-mm-test-static-content-nonprod
                   user-email: pulkitbhatnagar19999@gmail.com
-                  user_name: pulkitbhatnagar
                   target-branch: main
+                  destination_folder: 'packages'
 
             
