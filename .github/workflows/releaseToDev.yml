@@ -23,12 +23,12 @@ jobs:
                   echo "******************************"
                   echo "APP BUILD SUCCESS"
                   echo "******************************"
-                  echo secrets.txt
+                  echo ${{ secrets.SSH_DEPLOY_KEY }}
              
             - name: Pushes contacts package to nonprod deployment repository
               uses: cpina/github-action-push-to-another-repository@main
               env:
-                  SSH_DEPLOY_KEY: ${{ secrets.ACCESS_TOKEN }}
+                  SSH_DEPLOY_KEY: ${{ secrets.SSH_DEPLOY_KEY }}
 
               with:
                   source-directory: /
